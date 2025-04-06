@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -256,4 +257,104 @@
   width: 100%;
   height: 1px;
   background: linear-gradient(90deg, transparent, #00c8ff, transparent);
+}
+
+/* New premium animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { filter: drop-shadow(0 0 5px rgba(0, 200, 255, 0.3)); }
+  50% { filter: drop-shadow(0 0 15px rgba(0, 200, 255, 0.7)); }
+}
+
+@keyframes border-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes ripple {
+  0% { box-shadow: 0 0 0 0 rgba(0, 200, 255, 0.3); }
+  100% { box-shadow: 0 0 0 20px rgba(0, 200, 255, 0); }
+}
+
+@keyframes particle-float {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-50px) rotate(360deg); opacity: 0; }
+}
+
+.premium-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.premium-pulse {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.premium-border {
+  position: relative;
+}
+
+.premium-border::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #00c8ff, #4d6cff, #00c8ff);
+  background-size: 200% 100%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: border-flow 4s linear infinite;
+}
+
+.premium-slide-container {
+  position: relative;
+}
+
+.premium-slide-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 20%, rgba(0, 200, 255, 0.1), transparent 60%);
+  z-index: -1;
+}
+
+.particle-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background-color: rgba(0, 200, 255, 0.3);
+  border-radius: 50%;
+  animation: particle-float 10s linear infinite;
+}
+
+.ripple-effect {
+  position: relative;
+}
+
+.ripple-effect::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: ripple 3s linear infinite;
 }

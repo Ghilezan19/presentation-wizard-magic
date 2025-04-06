@@ -11,6 +11,7 @@ interface SlideProps {
 const Slide: React.FC<SlideProps> = ({ title, visual, bulletPoints, isActive }) => {
   const [visible, setVisible] = useState(false);
   const [visibleBullets, setVisibleBullets] = useState<number[]>([]);
+  const [particles, setParticles] = useState<{id: number, left: string, delay: string}[]>([]);
 
   useEffect(() => {
     if (isActive) {
@@ -24,6 +25,15 @@ const Slide: React.FC<SlideProps> = ({ title, visual, bulletPoints, isActive }) 
         }, 300 + (index * 150));
       });
       
+      // Generate random particles
+      const newParticles = Array.from({ length: 15 }, (_, i) => ({
+        id: i,
+        left: `${Math.random() * 100}%`,
+        delay: `${Math.random() * 10}s`,
+      }));
+      
+      setParticles(newParticles);
+      
       return () => {
         bulletTimers.forEach(timer => clearTimeout(timer));
       };
@@ -36,14 +46,27 @@ const Slide: React.FC<SlideProps> = ({ title, visual, bulletPoints, isActive }) 
   if (!isActive) return null;
   
   return (
-    <div className="slide-container w-full h-full bg-gradient-to-br from-[#0c0c15] via-[#121220] to-[#0c0c15] rounded-lg p-6 animate-fade-in border border-cyan-900/30">
+    <div className="slide-container premium-slide-container w-full h-full bg-gradient-to-br from-[#0c0c15] via-[#121220] to-[#0c0c15] rounded-lg p-6 animate-fade-in border border-cyan-900/30 premium-border">
+      <div className="particle-container">
+        {particles.map((particle) => (
+          <div 
+            key={particle.id}
+            className="particle"
+            style={{
+              left: particle.left,
+              animationDelay: particle.delay,
+            }}
+          />
+        ))}
+      </div>
+      
       <h2 className="premium-title text-2xl font-bold mb-6 cyan-glow">{title}</h2>
       
       <div className="flex h-[calc(100%-3rem)]">
         {/* Left side - Visual */}
         <div className="visual-container w-1/2 pr-6 flex items-center justify-center">
           <div 
-            className={`w-full max-w-md svg-icon ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+            className={`w-full max-w-md svg-icon premium-float premium-pulse ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
             style={{ transition: 'all 0.5s ease-out' }}
           >
             {visual}
@@ -56,7 +79,7 @@ const Slide: React.FC<SlideProps> = ({ title, visual, bulletPoints, isActive }) 
             {bulletPoints.map((point, index) => (
               <li 
                 key={index}
-                className={`bullet-point text-lg text-gray-200 ${visibleBullets.includes(index) ? 'opacity-100' : 'opacity-0'}`}
+                className={`bullet-point text-lg text-gray-200 ripple-effect ${visibleBullets.includes(index) ? 'opacity-100' : 'opacity-0'}`}
                 style={{ 
                   transition: 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)', 
                   transitionDelay: `${index * 0.15}s` 

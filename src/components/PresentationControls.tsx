@@ -19,7 +19,7 @@ const PresentationControls: React.FC<PresentationControlsProps> = ({
   onExport 
 }) => {
   return (
-    <div className="presentation-controls fixed bottom-0 left-0 right-0 p-4 flex justify-between items-center z-10 backdrop-blur-md bg-black/40">
+    <div className="presentation-controls fixed bottom-0 left-0 right-0 p-4 flex justify-between items-center z-10 backdrop-blur-md bg-black/40 premium-border">
       <div className="flex items-center gap-2">
         <Button 
           variant="outline" 
@@ -32,7 +32,7 @@ const PresentationControls: React.FC<PresentationControlsProps> = ({
           <ChevronLeft className="h-5 w-5 relative z-10" />
         </Button>
         
-        <span className="text-sm text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text font-mono">
+        <span className="text-sm text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text font-mono premium-pulse">
           {currentSlide + 1} / {totalSlides}
         </span>
         
@@ -54,7 +54,7 @@ const PresentationControls: React.FC<PresentationControlsProps> = ({
         className="border-cyan-700 hover:bg-cyan-900/50 text-cyan-400 hover:text-cyan-300 transition-all duration-300 relative overflow-hidden group glass-button"
       >
         <span className="absolute inset-0 w-full h-full bg-cyan-900/20 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
-        <Download className="h-4 w-4 mr-2 relative z-10" />
+        <Download className="h-4 w-4 mr-2 relative z-10 premium-pulse" />
         <span className="relative z-10">Export</span>
       </Button>
     </div>
