@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -106,20 +105,50 @@
 .grid-background {
   background-color: #0a0a0a;
   background-image: 
-    linear-gradient(rgba(0, 200, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 200, 255, 0.05) 1px, transparent 1px);
-  background-size: 20px 20px;
+    radial-gradient(circle at center, rgba(0, 200, 255, 0.05) 0%, transparent 70%),
+    linear-gradient(rgba(0, 200, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 200, 255, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 20px 20px, 20px 20px;
   background-position: center center;
+  position: relative;
+  overflow: hidden;
+}
+
+.grid-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(to bottom, rgba(0, 200, 255, 0.05) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.grid-background::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30%;
+  background: linear-gradient(to top, rgba(0, 200, 255, 0.05) 0%, transparent 100%);
+  pointer-events: none;
 }
 
 .cyan-glow {
   text-shadow: 0 0 5px rgba(0, 200, 255, 0.7);
 }
 
+.title-glow {
+  text-shadow: 0 0 15px rgba(0, 200, 255, 0.5), 0 0 30px rgba(0, 200, 255, 0.3);
+}
+
 .slide-container {
-  box-shadow: 0 0 20px rgba(0, 200, 255, 0.15);
+  box-shadow: 0 0 20px rgba(0, 200, 255, 0.15), 0 0 40px rgba(0, 0, 20, 0.3);
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(10px);
 }
 
 .slide-container::before {
@@ -135,7 +164,7 @@
     rgba(0, 200, 255, 0.1),
     transparent
   );
-  animation: shine 3s infinite;
+  animation: shine 5s infinite;
   z-index: 1;
 }
 
@@ -183,6 +212,19 @@
   background-color: rgba(10, 10, 10, 0.7);
   backdrop-filter: blur(5px);
   border-top: 1px solid rgba(0, 200, 255, 0.2);
+}
+
+.glass-button {
+  backdrop-filter: blur(4px);
+  background-color: rgba(0, 150, 200, 0.05);
+  border: 1px solid rgba(0, 200, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.glass-button:hover {
+  border-color: rgba(0, 200, 255, 0.5);
+  background-color: rgba(0, 150, 200, 0.15);
+  box-shadow: 0 0 10px rgba(0, 200, 255, 0.3);
 }
 
 @keyframes fadeIn {

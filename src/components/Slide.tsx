@@ -36,7 +36,7 @@ const Slide: React.FC<SlideProps> = ({ title, visual, bulletPoints, isActive }) 
   if (!isActive) return null;
   
   return (
-    <div className="slide-container w-full h-full bg-[#121212] rounded-lg p-6 animate-fade-in">
+    <div className="slide-container w-full h-full bg-gradient-to-br from-[#0c0c15] via-[#121220] to-[#0c0c15] rounded-lg p-6 animate-fade-in border border-cyan-900/30">
       <h2 className="premium-title text-2xl font-bold mb-6 cyan-glow">{title}</h2>
       
       <div className="flex h-[calc(100%-3rem)]">
@@ -58,7 +58,7 @@ const Slide: React.FC<SlideProps> = ({ title, visual, bulletPoints, isActive }) 
                 key={index}
                 className={`bullet-point text-lg text-gray-200 ${visibleBullets.includes(index) ? 'opacity-100' : 'opacity-0'}`}
                 style={{ 
-                  transition: 'all 0.5s ease-out', 
+                  transition: 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)', 
                   transitionDelay: `${index * 0.15}s` 
                 }}
               >

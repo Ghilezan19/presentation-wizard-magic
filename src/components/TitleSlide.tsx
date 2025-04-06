@@ -34,12 +34,12 @@ const TitleSlide: React.FC<TitleSlideProps> = ({ title, subtitle, isActive }) =>
   if (!isActive) return null;
   
   return (
-    <div className="slide-container w-full h-full bg-[#121212] rounded-lg p-6 flex flex-col items-center justify-center">
+    <div className="slide-container w-full h-full bg-gradient-to-br from-[#0c0c15] via-[#121220] to-[#0c0c15] rounded-lg p-6 flex flex-col items-center justify-center border border-cyan-900/30">
       <div 
         className={`mb-8 svg-icon ${iconVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
         style={{ transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)' }}
       >
-        <svg className="w-32 h-32 text-cyan-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <svg className="w-32 h-32 text-transparent bg-gradient-to-br from-cyan-400 to-blue-600 bg-clip-text" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <path d="M16 16v-4a4 4 0 0 0-8 0v4"></path>
           <path d="M12 12v8"></path>
           <path d="M8 16h8"></path>
@@ -51,7 +51,7 @@ const TitleSlide: React.FC<TitleSlideProps> = ({ title, subtitle, isActive }) =>
       </div>
       
       <h1 
-        className={`premium-title text-4xl font-bold mb-4 text-center cyan-glow ${titleVisible ? 'opacity-100 transform-none' : 'opacity-0 translate-y-4'}`}
+        className={`premium-title text-4xl md:text-5xl font-bold mb-6 text-center cyan-glow title-glow ${titleVisible ? 'opacity-100 transform-none' : 'opacity-0 translate-y-4'}`}
         style={{ transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)' }}
       >
         {title}
@@ -59,7 +59,7 @@ const TitleSlide: React.FC<TitleSlideProps> = ({ title, subtitle, isActive }) =>
       
       {subtitle && (
         <p 
-          className={`text-xl text-cyan-300 ${subtitleVisible ? 'opacity-100 transform-none' : 'opacity-0 translate-y-4'}`}
+          className={`text-xl md:text-2xl text-transparent bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text ${subtitleVisible ? 'opacity-100 transform-none' : 'opacity-0 translate-y-4'}`}
           style={{ transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)' }}
         >
           {subtitle}
