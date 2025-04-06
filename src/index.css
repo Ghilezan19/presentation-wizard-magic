@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -97,5 +98,59 @@
 
   body {
     @apply bg-background text-foreground;
+    background-color: #0a0a0a;
+    color: #e5e5e5;
   }
+}
+
+.grid-background {
+  background-color: #0a0a0a;
+  background-image: 
+    linear-gradient(rgba(0, 200, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 200, 255, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: center center;
+}
+
+.cyan-glow {
+  text-shadow: 0 0 5px rgba(0, 200, 255, 0.7);
+}
+
+.slide-container {
+  box-shadow: 0 0 20px rgba(0, 200, 255, 0.15);
+}
+
+.visual-container {
+  border-right: 1px solid rgba(0, 200, 255, 0.2);
+}
+
+.bullet-point {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.bullet-point::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: rgb(0, 200, 255);
+  border-radius: 0;
+  transform: rotate(45deg);
+}
+
+.presentation-controls {
+  background-color: rgba(10, 10, 10, 0.7);
+  backdrop-filter: blur(5px);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
 }
