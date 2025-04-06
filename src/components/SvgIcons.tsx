@@ -65,11 +65,11 @@ export const CpuRegistersIcon = () => (
 export const ContfizIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <rect x="3" y="3" width="18" height="18" rx="2" className="text-gray-800" fill="#1a1a1a" />
-    <text x="6" y="8" fontSize="3" className="text-cyan-400" fill="currentColor">struct CONTFIZ {</text>
+    <text x="6" y="8" fontSize="3" className="text-cyan-400" fill="currentColor">struct CONTFIZ {'{'}</text>
     <text x="8" y="12" fontSize="2.5" className="text-yellow-300" fill="currentColor">uint32 r0-r12;</text>
     <text x="8" y="15" fontSize="2.5" className="text-green-300" fill="currentColor">uint32 sp, lr, pc;</text>
     <text x="8" y="18" fontSize="2.5" className="text-purple-300" fill="currentColor">uint32 xpsr;</text>
-    <text x="6" y="21" fontSize="3" className="text-cyan-400" fill="currentColor">};</text>
+    <text x="6" y="21" fontSize="3" className="text-cyan-400" fill="currentColor">{'}'}</text>
   </svg>
 );
 
